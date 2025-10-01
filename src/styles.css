@@ -1,0 +1,164 @@
+body { background: #f5f7fb; }
+.card { box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.form-center { max-width: 480px; margin: 0 auto; }
+.cursor-pointer { cursor: pointer; }
+
+/* Auth page background that covers the full viewport and is responsive */
+.auth-page {
+	min-height: 100vh; /* full viewport height */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+	/* default background - replace URL with your own or use a local asset */
+	background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1650&q=80');
+	background-size: cover; /* cover entire area */
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+/* subtle dark overlay to improve contrast for form */
+.auth-page::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.45);
+	pointer-events: none;
+}
+
+/* make the card stand out and remain responsive */
+.auth-page .card {
+	position: relative; /* above overlay */
+	z-index: 2;
+	width: 100%;
+	max-width: 480px;
+	margin: 1rem;
+}
+
+/* ensure the interactive elements are above background overlays */
+.auth-page .card * { z-index: 3; position: relative; }
+
+/* smaller devices: reduce max width and padding */
+@media (max-width: 576px) {
+	.auth-page { background-position: center top; }
+	.auth-page .card { max-width: 92%; padding: 1rem; }
+}
+
+/* Departments page background and layout */
+.departments-page {
+	min-height: 100vh;
+	display: block;
+	position: relative;
+	background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1650&q=80');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 3rem 1rem;
+}
+.departments-page::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.35);
+	pointer-events: none;
+}
+.departments-container{
+	position: relative;
+	z-index: 2;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+.departments-instructions .card {
+	background: rgba(255,255,255,0.95);
+}
+.department-card {
+	transition: transform .12s ease, box-shadow .12s ease;
+}
+.department-card:hover{
+	transform: translateY(-4px);
+	box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 768px){
+	.departments-page{ padding: 2rem .5rem }
+}
+
+/* Add Department two-column layout */
+.add-dept-page{
+	min-height: 70vh;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	gap: 1rem;
+	padding: 2rem 1rem;
+}
+.add-dept-side{
+	flex: 1 1 50%;
+	border-radius: 8px;
+	background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=60');
+	background-size: cover;
+	background-position: center center;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+	min-height: 420px;
+}
+.add-dept-form{
+	flex: 0 0 480px;
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+}
+.add-dept-form .card{
+	width: 100%;
+}
+
+/* Extra small buttons */
+.btn-xs {
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  line-height: 1;
+  border-radius: 3px;
+}
+
+/* Extra small buttons */
+.btn-xs {
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  line-height: 1;
+  border-radius: 3px;
+}
+
+/* Adjust top-right button position for dept cards */
+.dept-tile.position-relative {
+  position: relative;
+}
+
+.dept-tile .position-absolute.top-2.end-2 {
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+
+
+.add-dept-form .card, .add-dept-form .card * { position: relative; z-index: 3 }
+
+@media (max-width: 900px){
+	.add-dept-page{ flex-direction: column; padding: 1rem; }
+	.add-dept-side{ width: 100%; height: 220px; min-height: 180px; border-radius: 8px; }
+	.add-dept-form{ width: 100%; }
+}
+
+.dept-card h6{ margin-bottom: .25rem }
+.dept-card p{ margin-bottom: .5rem }
+.departments-list-container{ position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+
+/* modern department tiles */
+.dept-tile{ border: none; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); transition: transform .15s ease, box-shadow .15s ease; background: rgba(255,255,255,0.9); }
+.dept-tile:hover{ transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.16); }
+.dept-tile .avatar{ width:48px; height:48px; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff }
+.departments-grid{ margin-top: 1rem }
+
+@media (max-width: 576px){
+	.dept-tile .avatar{ width:40px; height:40px }
+}
+
