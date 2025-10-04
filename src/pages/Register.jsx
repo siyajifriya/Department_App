@@ -1,21 +1,25 @@
+
 // import React, { useState } from 'react'
 // import api from '../api'
+// import { useNavigate } from 'react-router-dom'
 
-// export default function Register(){
-//   const [form, setForm] = useState({name:'', email:'', password:''})
+// export default function Register() {
+//   const [form, setForm] = useState({ name:'', email:'', password:'' })
 //   const [msg, setMsg] = useState('')
+//   const navigate = useNavigate()
 
 //   const onChange = e => setForm({...form, [e.target.name]: e.target.value})
 
 //   const submit = async e => {
 //     e.preventDefault()
-//     console.log('Register submit', form)
-//     try{
-//       const res = await api.post('/register', form)
-//       setMsg('Registered successfully. Please login.')
+//     try {
+//       await api.post('/register', form)
 //       setForm({name:'', email:'', password:''})
-//     }catch(err){
-//       console.error('Register error', err)
+//       // store success message temporarily
+//       localStorage.setItem('logoutMessage', 'Registered successfully. Please login.')
+//       // redirect to login page
+//       navigate('/login')
+//     } catch(err) {
 //       setMsg(err?.response?.data?.message || 'Register failed')
 //     }
 //   }
@@ -24,7 +28,7 @@
 //     <div className="auth-page">
 //       <div className="card p-4 form-center">
 //         <h3 className="mb-3 text-center">Register</h3>
-//         {msg && <div className="alert alert-info">{msg}</div>}
+//         {msg && <div className="alert alert-danger">{msg}</div>}
 //         <form onSubmit={submit}>
 //           <div className="mb-3">
 //             <label className="form-label">Name</label>
@@ -54,13 +58,13 @@ export default function Register() {
   const [msg, setMsg] = useState('')
   const navigate = useNavigate()
 
-  const onChange = e => setForm({...form, [e.target.name]: e.target.value})
+  const onChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
   const submit = async e => {
     e.preventDefault()
     try {
       await api.post('/register', form)
-      setForm({name:'', email:'', password:''})
+      setForm({ name:'', email:'', password:'' })
       // store success message temporarily
       localStorage.setItem('logoutMessage', 'Registered successfully. Please login.')
       // redirect to login page
@@ -90,7 +94,13 @@ export default function Register() {
           </div>
           <button type="submit" className="btn btn-primary w-100">Register</button>
         </form>
+
+        {/* Link back to Login */}
+        <p className="text-center mt-3">
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </div>
     </div>
   )
 }
+
